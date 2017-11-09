@@ -42,8 +42,8 @@ h1
 <div class="ibox-content">
  <!-- AQUI CONSTRUCCION DE FORMULARIO DE ENVIO DE INFORMACION    -->
 
-         <form method="POST" accept-charset="UTF-8" role="form" id="form1" class="form-horizontal" enctype="multipart/form-data">
-         
+         <form method="POST" a accept-charset="UTF-8" role="form" id="form1" class="form-horizontal" enctype="multipart/form-data">
+         <input name="_token" type="hidden" value="xLtjk2Ctq0Jg192jdB8O7P8soSSAbPdAvba10Cuw">
         
         
                         

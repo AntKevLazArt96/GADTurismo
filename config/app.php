@@ -1,7 +1,10 @@
 <?php
 
 return [
-
+    
+    'fileDestinationPath' => 'uploads',
+    'allowedFileTypes'=>'pdf',
+    'maxFileSize'=> 2000,
     /*
     |--------------------------------------------------------------------------
     | Application Name

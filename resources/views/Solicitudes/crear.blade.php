@@ -48,19 +48,34 @@ h1
  <!-- Estado del formulario de ingreso
   -->
 
-<form>
-
+<form method="POST" action="{{ route('solicitud.store') }}" enctype="multipart/form-data">
+{{ csrf_field() }}
       <div class="row">
+        <!--div class="col-sm-6 col-md-6">
+          <div class="form-group">
+            <label for="cedula">Cedula o Ruc</label>
+            <input type="text" class="form-control" id="cedula" aria-describedby="emailHelp" placeholder="Ingrese cédula (sin guión Ejemplo: 1234567897) ">
+            @if ($errors->has('cedula'))
+            <p style="font-size: 15px; color: red;"> {{ $errors->first('cedula') }}</p>
+            @endif
+          </div>
+        </div-->
+        <div class="col-sm-6 col-md-6">
+          <div class="form-group">
+            <label for="direccion">Direccion</label>
+            <input type="text" class="form-control" id="direccion" aria-describedby="emailHelp" placeholder="Ingrese su direccion domiciliaria" value="{{ old('direccion') }}">
+            @if ($errors->has('direccion'))
+            <p style="font-size: 15px; color: red;"> {{ $errors->first('direccion') }}</p>
+            @endif
+          </div>
+        </div>
       <div class="col-sm-6 col-md-6">
       <div class="form-group">
-        <label for="identificacion">Cedula o Ruc</label>
-        <input type="text" class="form-control" id="identificacion" aria-describedby="emailHelp" placeholder="Ingrese cédula (sin guión Ejemplo: 1234567897) ">
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-6">
-      <div class="form-group">
-        <label for="identificacion">Clave Catastral</label>
-        <input type="text" class="form-control" id="identificacion" aria-describedby="emailHelp" placeholder="Ingrese RUC">
+        <label for="clave">Clave Catastral</label>
+        <input type="text" class="form-control" id="clave" aria-describedby="emailHelp" placeholder="Ingrese Clave" value="{{ old('clave') }}">
+        @if ($errors->has('clave'))
+        <p style="font-size: 15px; color: red;"> {{ $errors->first('clave') }}</p>
+        @endif
       </div>
       </div>
         
@@ -73,61 +88,43 @@ h1
           <div class="form-group">
             <label for="iepi">Documento IEPI</label>
             <div class="form-group has-feedback">
-                <input name="archivo_1" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" required="" data-buttontext="Buscar" data-iconname="fa fa-certificate" data-buttonbefore="true" data-placeholder="No ha seleccionado archivos aún" id="filestyle-0" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-                <div class="bootstrap-filestyle input-group">
-                <span class="group-span-filestyle input-group-btn" tabindex="0">
-                <label for="filestyle-0" class="btn btn-success ">
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                 <span class="buttonText">Buscar</span>
-                 </label></span><input type="text" class="form-control " placeholder="No ha seleccionado archivos aún" disabled=""> </div>
-                <p style="font-size: 10px; color: red;"> Formato en pdf (No máximo a 8 mb)</p>
-        </div>
-        </div>
+                <input name="iepi" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" value="{{ old('iepi') }}">
+                @if ($errors->has('iepi'))
+                  <p style="font-size: 15px; color: red;"> {{ $errors->first('iepi') }}</p>
+                @endif
+            </div>
+          </div>
         </div>  
         <div class="col-sm-6 col-md-6">
           <div class="form-group">
-        <label for="iepi">Patente Municipal</label>
-        <div class="form-group has-feedback">
-                <input name="archivo_1" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" required="" data-buttontext="Buscar" data-iconname="fa fa-certificate" data-buttonbefore="true" data-placeholder="No ha seleccionado archivos aún" id="filestyle-0" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-                <div class="bootstrap-filestyle input-group">
-                <span class="group-span-filestyle input-group-btn" tabindex="0">
-                <label for="filestyle-0" class="btn btn-success ">
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                 <span class="buttonText">Buscar</span>
-                 </label></span><input type="text" class="form-control " placeholder="No ha seleccionado archivos aún" disabled=""> </div>
-                <p style="font-size: 10px; color: red;"> Formato en pdf (No máximo a 8 mb)</p>
-        </div>
-        </div>
-        </div>
-        <div class="col-sm-6 col-md-6">
-          <div class="form-group">
-            <label for="iepi">Permiso Cuerpo de Bomberos</label>
+            <label for="patente">Patente Municipal</label>
             <div class="form-group has-feedback">
-                <input name="archivo_1" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" required="" data-buttontext="Buscar" data-iconname="fa fa-certificate" data-buttonbefore="true" data-placeholder="No ha seleccionado archivos aún" id="filestyle-0" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-                <div class="bootstrap-filestyle input-group">
-                <span class="group-span-filestyle input-group-btn" tabindex="0">
-                <label for="filestyle-0" class="btn btn-success ">
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                 <span class="buttonText">Buscar</span>
-                 </label></span><input type="text" class="form-control " placeholder="No ha seleccionado archivos aún" disabled=""> </div>
-                <p style="font-size: 10px; color: red;"> Formato en pdf (No máximo a 8 mb)</p>
-        </div>
-        </div>
-        </div>  
+                <input name="patente" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" >
+                @if ($errors->has('patente'))
+                  <p style="font-size: 15px; color: red;"> {{ $errors->first('patente') }}</p>
+                @endif
+            </div>
+          </div>
+        </div> 
         <div class="col-sm-6 col-md-6">
-        <div class="form-group">
-        <label for="iepi">Permiso Centro de salud</label>
-        <div class="form-group has-feedback">
-                <input name="archivo_1" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" required="" data-buttontext="Buscar" data-iconname="fa fa-certificate" data-buttonbefore="true" data-placeholder="No ha seleccionado archivos aún" id="filestyle-0" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-                <div class="bootstrap-filestyle input-group">
-                <span class="group-span-filestyle input-group-btn" tabindex="0">
-                <label for="filestyle-0" class="btn btn-success ">
-                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                 <span class="buttonText">Buscar</span>
-                 </label></span><input type="text" class="form-control " placeholder="No ha seleccionado archivos aún" disabled=""> </div>
+          <div class="form-group">
+            <label for="bomberos">Permiso de cuerpos de bomberos</label>
+            <div class="form-group has-feedback">
+                <input name="bomberos" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" >
+                @if ($errors->has('patente'))
+                  <p style="font-size: 15px; color: red;"> {{ $errors->first('patente') }}</p>
+                @endif
+            </div>
+          </div>
+        </div>   
+        <div class="col-sm-6 col-md-6">
+          <div class="form-group">
+            <label for="salud">Permiso de centro de salud</label>
+            <div class="form-group has-feedback">
+                <input name="salud" type="file" class="filestyle" data-showupload="false" data-input="true" data-buttonname="btn-success" >
                 <p style="font-size: 10px; color: red;"> Formato en pdf (No máximo a 8 mb)</p>
-        </div>
-      </div>
+            </div>
+          </div>
         </div>          
       </div>
       
